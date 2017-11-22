@@ -2,37 +2,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "menuIO.h"
+#include "formulas.h"
+
 int main()
 {
-    int menu; //Variable for the number the user inputs
-     //Float variables for the user input and output, used floats in case the user enters e.g. 14.7
-
-    printf("Enter a number from the list below\n\n");
-
-    printf("1. Addition\n"); //Calculator menu, user must enter a value from 1 - 4 for the program to work
-    printf("2. Subtraction\n");
-    printf("3. Multiplication\n");
-    printf("4. Division\n\n");
-
-    printf("Enter number: "); //User input for the calculator menu
-    scanf("%d", &menu);
-
-    printf("\n");
-
+    int menu = selectMenuChoice(); //Variable for the number the user inputs
+                                  //Float variables for the user input and output, used floats in case the user enters e.g. 14.7
     switch(menu) //switch statement for menu
     {
     case 1:
+      printf("You entered Addition\n\n");
+      float num1 = firstNumber();
+      float num2 = secondNumber();
+      printf("%.2f + %.2f = %.2f \n",num1, num2, addition(num1, num2));
 
-        break;
+      break;
     case 2:
+      printf("You entered Subtraction\n\n");
+      float num1 = firstNumber();
+      float num2 = secondNumber();
+      printf("%.2f - %.2f = %.2f \n",num1, num2, subtraction(num1, num2));
 
-        break;
+      break;
     case 3:
+      printf("You entered Multiplication\n\n");
+      float num1 = firstNumber();
+      float num2 = secondNumber();
+      printf("%.2f * %.2f = %.2f \n",num1, num2, multiplication(num1, num2));
 
-        break;
+      break;
     case 4:
+      printf("You entered Division\n\n");
+      float num1 = firstNumber();
+      float num2 = secondNumber();
+      printf("%.2f / %.2f = %.2f \n",num1, num2, division(num1, num2));
 
-        break;
+      break;
     default:
         printf("Enter correct number e.g 1 - 4\n"); //Outputted if the user enters a value other than 1 - 4
         break;
