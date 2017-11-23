@@ -1,32 +1,36 @@
-CC = GCC
-OBJS = main.o formulas.o menuIO.o
-TEST_OBJS = formulatest.o formulas
-SRC_EXT = c
-OBJ_EXT = o
-TARGET = program
-TEST_TARGET = test
-UNITY = Unity/src/unity.c
-UNITY_H = Unity/src/unity.h
+OBJS = source.o calculatorFunc.o userIO.o
+TEST = unity.o test.o calculatorFunc.o
+CC = gcc
+DEBUG = -g
+CFLAGS = -Wall -c $(DEBUG)
+LFLAGS = -Wall $(DEBUG)
 
-all: test run
+all: calculator calculator_test test
+calculator: $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) -o calculator
+calculator_test: $(TEST)
+	$(CC) $(LFLAGS) $(TEST) -o calculator_test
 
-main.o: main.c
-	$(CC) main.c
+source.o:source.c
+	$(CC) $(CFLAGS) source.c
 
-menuIO.o: menuIO.c menuIO.h
-	$(CC) menuIO.c
+calculatorFunc.o:calculatorFunc.c calculatorFunc.h
+	$(CC) $(CFLAGS) calculatorFunc.c
 
-formulas.o: formulas.c formulas.h
-	$(CC) formulas.c
+userIO.o:userIO.c userIO.h
+	$(CC) $(CFLAGS) userIO.c
 
-unity.o: $(UNITY) $(UNITY_H)
-	$(CC) $(UNITY)
+unity.o: Libs/unity/src/unity.c Libs/unity/src/unity.h
+	$(CC) $(CFLAGS) Libs/unity/src/unity.c
 
-formulatest.o:formulatest.c
-	$(CC) formulatest.c
+test.o: test.c
+	$(CC) $(CFLAGS) test.c
 
-test: $(TEST_OBJS)
-	$(CC) formulatest.o formulas.o -o $(TEST_TARGET)
+clean:
+	rm \*.o
+	rm \*.exe
 
-run: $(OBJS)
-	$(CC) main.o formulas.o menuIO.o -o $(TARGET)
+run:
+	calculator.exe
+test:
+	calculator_test.exe

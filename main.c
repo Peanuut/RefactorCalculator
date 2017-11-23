@@ -7,35 +7,36 @@
 
 int main()
 {
+    float num1, num2;
     int menu = selectMenuChoice(); //Variable for the number the user inputs
                                   //Float variables for the user input and output, used floats in case the user enters e.g. 14.7
     switch(menu) //switch statement for menu
     {
     case 1:
       printf("You entered Addition\n\n");
-      float num1 = firstNumber();
-      float num2 = secondNumber();
+      num1 = firstNumber();
+      num2 = secondNumber();
       printf("%.2f + %.2f = %.2f \n",num1, num2, addition(num1, num2));
 
       break;
     case 2:
       printf("You entered Subtraction\n\n");
-      float num1 = firstNumber();
-      float num2 = secondNumber();
+      num1 = firstNumber();
+      num2 = secondNumber();
       printf("%.2f - %.2f = %.2f \n",num1, num2, subtraction(num1, num2));
 
       break;
     case 3:
       printf("You entered Multiplication\n\n");
-      float num1 = firstNumber();
-      float num2 = secondNumber();
+      num1 = firstNumber();
+      num2 = secondNumber();
       printf("%.2f * %.2f = %.2f \n",num1, num2, multiplication(num1, num2));
 
       break;
     case 4:
       printf("You entered Division\n\n");
-      float num1 = firstNumber();
-      float num2 = secondNumber();
+      num1 = firstNumber();
+      num2 = secondNumber();
       printf("%.2f / %.2f = %.2f \n",num1, num2, division(num1, num2));
 
       break;
